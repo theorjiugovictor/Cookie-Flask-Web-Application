@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>🍪 The Amazing Cookie World! 🍪</title>
+		<style>
+			body {
+				font-family: 'Comic Sans MS', cursive;
+				background: #f5e6d3;
+				margin: 0;
+				padding: 20px;
+				text-align: center;
+			}
+
+			.cookie-container {
+				max-width: 800px;
+				margin: 0 auto;
+				background: white;
+				padding: 20px;
+				border-radius: 15px;
+				box-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
+			}
+
+			h1 {
+				color: #8b4513;
+				font-size: 3em;
+				margin-bottom: 20px;
+			}
+
+			.cookie {
+				font-size: 100px;
+				cursor: pointer;
+				transition: transform 0.3s;
+				display: inline-block;
+			}
+
+			.cookie:hover {
+				transform: rotate(20deg) scale(1.2);
+			}
+
+			.fun-fact {
+				background: #ffe4c4;
+				padding: 15px;
+				margin: 20px 0;
+				border-radius: 10px;
+				border: 2px dashed #8b4513;
+			}
+
+			.cookie-types {
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				margin: 20px 0;
+			}
+
+			.cookie-type {
+				background: #fff8dc;
+				padding: 15px;
+				margin: 10px;
+				border-radius: 10px;
+				width: 200px;
+				transition: transform 0.3s;
+			}
+
+			.cookie-type:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			}
+
+			button {
+				background: #8b4513;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 1.2em;
+				margin: 10px;
+				transition: background 0.3s;
+			}
+
+			button:hover {
+				background: #654321;
+			}
+
+			@keyframes crumble {
+				0% {
+					transform: rotate(0);
+				}
+				25% {
+					transform: rotate(-20deg);
+				}
+				75% {
+					transform: rotate(20deg);
+				}
+				100% {
+					transform: rotate(0);
+				}
+			}
+
+			.crumble {
+				animation: crumble 0.5s ease;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="cookie-container">
+			<h1>Welcome to Cookie Paradise! 🍪</h1>
+
+			<div class="cookie" id="bigCookie">🍪</div>
+
+			<div class="fun-fact">
+				<h3>🤔 Did You Know?</h3>
+				<p>
+					The first cookies were actually test cakes! Bakers used small amounts
+					of cake batter to test oven temperatures.
+				</p>
+			</div>
+
+			<h2>Popular Cookie Types</h2>
+			<div class="cookie-types">
+				<div class="cookie-type">
+					<h3>Chocolate Chip</h3>
+					<p>The classic favorite! 🍫</p>
+				</div>
+				<div class="cookie-type">
+					<h3>Oatmeal Raisin</h3>
+					<p>The healthy choice! 🌾</p>
+				</div>
+				<div class="cookie-type">
+					<h3>Sugar Cookie</h3>
+					<p>Simple but sweet! ✨</p>
+				</div>
+			</div>
+
+			<button id="cookieButton">Make More Cookies!</button>
+		</div>
+
+		<script>
+			const cookie = document.getElementById('bigCookie');
+			const button = document.getElementById('cookieButton');
+
+			cookie.addEventListener('click', () => {
+				cookie.classList.add('crumble');
+				setTimeout(() => {
+					cookie.classList.remove('crumble');
+				}, 500);
+			});
+
+			button.addEventListener('click', () => {
+				const newCookie = document.createElement('span');
+				newCookie.textContent = '🍪';
+				newCookie.style.fontSize = '50px';
+				newCookie.style.margin = '5px';
+				newCookie.style.display = 'inline-block';
+				document.querySelector('.cookie-container').appendChild(newCookie);
+
+				newCookie.addEventListener('click', () => {
+					newCookie.style.display = 'none';
+				});
+			});
+		</script>
+	</body>
+</html>
